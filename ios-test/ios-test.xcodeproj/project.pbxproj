@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		AE04590625B134BF00D5429E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04590525B134BF00D5429E /* AppDelegate.swift */; };
-		AE04590825B134BF00D5429E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04590725B134BF00D5429E /* SceneDelegate.swift */; };
-		AE04590A25B134C000D5429E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04590925B134C000D5429E /* ViewController.swift */; };
+		AE04590A25B134C000D5429E /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04590925B134C000D5429E /* mainViewController.swift */; };
 		AE04590D25B134C000D5429E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE04590B25B134C000D5429E /* Main.storyboard */; };
 		AE04590F25B134C400D5429E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE04590E25B134C400D5429E /* Assets.xcassets */; };
 		AE04591225B134C400D5429E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE04591025B134C400D5429E /* LaunchScreen.storyboard */; };
+		AEAF2BA925B1EE5F00C04522 /* postsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAF2BA825B1EE5F00C04522 /* postsTableViewCell.swift */; };
+		AEAF2C7B25B2434600C04522 /* serviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAF2C7A25B2434600C04522 /* serviceModel.swift */; };
+		AEAF2C9925B28B2300C04522 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAF2C9825B28B2300C04522 /* detailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AE04590225B134BF00D5429E /* ios-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE04590525B134BF00D5429E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AE04590725B134BF00D5429E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AE04590925B134C000D5429E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AE04590925B134C000D5429E /* mainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 		AE04590C25B134C000D5429E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE04590E25B134C400D5429E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE04591125B134C400D5429E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE04591325B134C400D5429E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEAF2BA825B1EE5F00C04522 /* postsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsTableViewCell.swift; sourceTree = "<group>"; };
+		AEAF2C7A25B2434600C04522 /* serviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = serviceModel.swift; sourceTree = "<group>"; };
+		AEAF2C9825B28B2300C04522 /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +61,40 @@
 			isa = PBXGroup;
 			children = (
 				AE04590525B134BF00D5429E /* AppDelegate.swift */,
-				AE04590725B134BF00D5429E /* SceneDelegate.swift */,
-				AE04590925B134C000D5429E /* ViewController.swift */,
+				AEAF2C9125B280F200C04522 /* ViewControllers */,
+				AEAF2B9025B1E21C00C04522 /* Models */,
+				AEAF2C9425B289C700C04522 /* cell */,
 				AE04590B25B134C000D5429E /* Main.storyboard */,
 				AE04590E25B134C400D5429E /* Assets.xcassets */,
 				AE04591025B134C400D5429E /* LaunchScreen.storyboard */,
 				AE04591325B134C400D5429E /* Info.plist */,
 			);
 			path = "ios-test";
+			sourceTree = "<group>";
+		};
+		AEAF2B9025B1E21C00C04522 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF2C7A25B2434600C04522 /* serviceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AEAF2C9125B280F200C04522 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE04590925B134C000D5429E /* mainViewController.swift */,
+				AEAF2C9825B28B2300C04522 /* detailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AEAF2C9425B289C700C04522 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				AEAF2BA825B1EE5F00C04522 /* postsTableViewCell.swift */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE04590A25B134C000D5429E /* ViewController.swift in Sources */,
+				AE04590A25B134C000D5429E /* mainViewController.swift in Sources */,
+				AEAF2BA925B1EE5F00C04522 /* postsTableViewCell.swift in Sources */,
 				AE04590625B134BF00D5429E /* AppDelegate.swift in Sources */,
-				AE04590825B134BF00D5429E /* SceneDelegate.swift in Sources */,
+				AEAF2C9925B28B2300C04522 /* detailViewController.swift in Sources */,
+				AEAF2C7B25B2434600C04522 /* serviceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +201,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -230,6 +263,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -289,6 +323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R569H7A9M6;
 				INFOPLIST_FILE = "ios-test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R569H7A9M6;
 				INFOPLIST_FILE = "ios-test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
