@@ -27,20 +27,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1N-IK-fCq">
-                                <rect key="frame" x="0.0" y="817" width="414" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Til-qJ-wRu"/>
-                                    <constraint firstAttribute="width" constant="414" id="s6V-pk-ImS"/>
-                                </constraints>
-                                <state key="normal" title="Dismiss All">
-                                    <color key="titleColor" systemColor="systemOrangeColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissAllPostsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SY3-ul-qI9"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="185" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z58-Rh-muY">
                                 <rect key="frame" x="0.0" y="89" width="414" height="728"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,7 +71,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ONK-Co-f9T">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ONK-Co-f9T">
                                                     <rect key="frame" x="20" y="49.5" width="80" height="82.5"/>
                                                     <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,6 +156,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="author" destination="8yf-vM-lGg" id="lGn-Go-eQ8"/>
+                                            <outlet property="authorLeftConstraint" destination="r1T-s0-b4C" id="AdA-uq-pG5"/>
                                             <outlet property="countComments" destination="oQe-4i-OOx" id="MTk-fH-yBP"/>
                                             <outlet property="dismissPost" destination="Pcf-tl-sdw" id="07a-qM-aVV"/>
                                             <outlet property="seenIndicator" destination="3AT-GR-QIu" id="1oq-S7-Nlj"/>
@@ -184,25 +171,73 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PQh-i3-T6l"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1N-IK-fCq">
+                                <rect key="frame" x="0.0" y="817" width="414" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Til-qJ-wRu"/>
+                                    <constraint firstAttribute="width" constant="414" id="s6V-pk-ImS"/>
+                                </constraints>
+                                <state key="normal" title="Dismiss All">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissAllPostsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SY3-ul-qI9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utc-sF-EM2">
+                                <rect key="frame" x="0.0" y="89" width="414" height="728"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="9Pu-jb-jfh"/>
+                                    <constraint firstAttribute="height" constant="728" id="OkL-bV-n6s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Press to reload posts">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadPostsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0nD-8W-K4O"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading posts..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peL-hu-Mjm">
+                                <rect key="frame" x="0.0" y="89" width="414" height="728"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="t15-K0-I4g"/>
+                                    <constraint firstAttribute="height" constant="728" id="zPr-9h-4bN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="z58-Rh-muY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6bt-zT-4VC"/>
                             <constraint firstItem="TQ6-a2-NQv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7SN-U3-puN"/>
                             <constraint firstItem="f1N-IK-fCq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8Jj-Gr-P3n"/>
+                            <constraint firstItem="peL-hu-Mjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ddo-O8-4BB"/>
                             <constraint firstItem="f1N-IK-fCq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EPo-tG-tJS"/>
                             <constraint firstItem="z58-Rh-muY" firstAttribute="top" secondItem="TQ6-a2-NQv" secondAttribute="bottom" id="Jdf-zM-kh8"/>
                             <constraint firstItem="z58-Rh-muY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LAG-2J-PQX"/>
+                            <constraint firstItem="peL-hu-Mjm" firstAttribute="top" secondItem="TQ6-a2-NQv" secondAttribute="bottom" id="LLX-ms-GOF"/>
                             <constraint firstItem="TQ6-a2-NQv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PiI-vb-elX"/>
+                            <constraint firstItem="peL-hu-Mjm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="REo-Pg-vp1"/>
+                            <constraint firstItem="Utc-sF-EM2" firstAttribute="top" secondItem="TQ6-a2-NQv" secondAttribute="bottom" id="XDk-CR-hzf"/>
+                            <constraint firstItem="Utc-sF-EM2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a1j-xe-dhJ"/>
+                            <constraint firstItem="Utc-sF-EM2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eey-bl-dZN"/>
+                            <constraint firstItem="f1N-IK-fCq" firstAttribute="top" secondItem="peL-hu-Mjm" secondAttribute="bottom" id="eq2-df-3fu"/>
                             <constraint firstItem="f1N-IK-fCq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fYT-AJ-5e8"/>
                             <constraint firstItem="f1N-IK-fCq" firstAttribute="top" secondItem="z58-Rh-muY" secondAttribute="bottom" id="m45-uq-1lc"/>
+                            <constraint firstItem="f1N-IK-fCq" firstAttribute="top" secondItem="Utc-sF-EM2" secondAttribute="bottom" id="tWN-Fc-MFD"/>
                             <constraint firstItem="TQ6-a2-NQv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yzi-LK-CgP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dismissAllPostsBtn" destination="f1N-IK-fCq" id="DcH-Vz-ca3"/>
+                        <outlet property="loader" destination="peL-hu-Mjm" id="tQL-38-qfV"/>
                         <outlet property="postsTableView" destination="z58-Rh-muY" id="leh-kY-CvB"/>
+                        <outlet property="reloadPosts" destination="Utc-sF-EM2" id="HDC-Ps-Wto"/>
                         <outlet property="viewControllerTitle" destination="TQ6-a2-NQv" id="SWP-1S-JEW"/>
                         <segue destination="bHS-E1-KB6" kind="showDetail" identifier="showDetailPost" id="S3j-5K-cBc"/>
                     </connections>
@@ -285,18 +320,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqV-MN-d91">
+                                <rect key="frame" x="334" y="319" width="60" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="N9u-vN-5Xz"/>
+                                    <constraint firstAttribute="height" constant="57" id="o9K-Zy-fuy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="square.and.arrow.down.on.square" catalog="system"/>
+                                <connections>
+                                    <action selector="downloadImageAction:" destination="bHS-E1-KB6" eventType="touchUpInside" id="AVg-LQ-y3f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ci0-3M-a7E"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BpP-Pj-nLu" firstAttribute="bottom" secondItem="Ci0-3M-a7E" secondAttribute="bottom" id="BI5-9f-dDy"/>
                             <constraint firstItem="7RP-WO-v48" firstAttribute="leading" secondItem="Ci0-3M-a7E" secondAttribute="leading" constant="20" id="BLo-Iz-p12"/>
+                            <constraint firstItem="Ci0-3M-a7E" firstAttribute="trailing" secondItem="OqV-MN-d91" secondAttribute="trailing" constant="20" id="CnM-bM-P6s"/>
                             <constraint firstItem="Ci0-3M-a7E" firstAttribute="trailing" secondItem="ST0-Ov-LrW" secondAttribute="trailing" constant="95" id="HSm-1A-ncU"/>
                             <constraint firstItem="BpP-Pj-nLu" firstAttribute="leading" secondItem="Ci0-3M-a7E" secondAttribute="leading" constant="20" id="J60-Zp-qQU"/>
                             <constraint firstItem="BpP-Pj-nLu" firstAttribute="top" secondItem="ST0-Ov-LrW" secondAttribute="bottom" constant="4" id="Vrh-BG-KBE"/>
                             <constraint firstItem="2O6-YO-V2d" firstAttribute="trailing" secondItem="Ci0-3M-a7E" secondAttribute="trailing" id="W2n-eh-ekj"/>
                             <constraint firstItem="ST0-Ov-LrW" firstAttribute="top" secondItem="2O6-YO-V2d" secondAttribute="bottom" constant="67" id="caW-1r-3E4"/>
                             <constraint firstItem="7RP-WO-v48" firstAttribute="top" secondItem="2O6-YO-V2d" secondAttribute="bottom" constant="25" id="iKN-6l-jdh"/>
+                            <constraint firstItem="BpP-Pj-nLu" firstAttribute="top" secondItem="OqV-MN-d91" secondAttribute="bottom" constant="8" symbolic="YES" id="jFP-ah-S67"/>
                             <constraint firstItem="Ci0-3M-a7E" firstAttribute="trailing" secondItem="BpP-Pj-nLu" secondAttribute="trailing" constant="20" id="kM1-S1-39y"/>
                             <constraint firstItem="2O6-YO-V2d" firstAttribute="leading" secondItem="Ci0-3M-a7E" secondAttribute="leading" id="mg8-28-J3e"/>
                             <constraint firstItem="2O6-YO-V2d" firstAttribute="top" secondItem="Ci0-3M-a7E" secondAttribute="top" id="raJ-iV-wA7"/>
@@ -305,6 +355,7 @@
                     </view>
                     <connections>
                         <outlet property="author" destination="7RP-WO-v48" id="A8x-kW-rnI"/>
+                        <outlet property="downloadImage" destination="OqV-MN-d91" id="oMN-pz-Y1h"/>
                         <outlet property="image" destination="ST0-Ov-LrW" id="k6H-K5-8P5"/>
                         <outlet property="titleView" destination="BpP-Pj-nLu" id="ujf-dW-PsH"/>
                     </connections>
@@ -320,6 +371,7 @@
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="dismiss" width="48" height="48"/>
         <image name="placeholder" width="64" height="64"/>
+        <image name="square.and.arrow.down.on.square" catalog="system" width="122" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

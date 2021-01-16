@@ -1,5 +1,5 @@
 //
-//  postsTableViewCell.swift
+//  postsTableViewswift
 //  ios-test
 //
 //  Created by Lucas Nahuel Giacche on 15/01/2021.
@@ -22,6 +22,8 @@ class postsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleOfPost: UITextView!
     @IBOutlet weak var dismissPost: UIButton!
     @IBOutlet weak var countComments: UILabel!
+    @IBOutlet weak var authorLeftConstraint: NSLayoutConstraint!
+    
     
     weak var delegate: cellDelegate?
     
@@ -33,6 +35,18 @@ class postsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         titleOfPost.textContainer.maximumNumberOfLines = 4
         titleOfPost.textContainer.lineBreakMode = .byTruncatingTail
+        
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        seenIndicator.isHidden = false
+        authorLeftConstraint.constant = 12
+        author.textColor = .white
+        titleOfPost.textColor = .white
+        timeFromPost.textColor = .white
+        dismissPost.setTitleColor(.white, for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,6 +64,23 @@ class postsTableViewCell: UITableViewCell {
         getTime(entryTime: entry)
         
         titleOfPost.centerVertically()
+
+        if(entry.urlBigImage != nil){
+            let imageBigUrl = MyTapGesture(target: self, action: #selector(self.openImage))
+            imageBigUrl.imageUrlToOpen = entry.urlBigImage
+            thumbnail.isUserInteractionEnabled = true
+            thumbnail.addGestureRecognizer(imageBigUrl)
+        }else{
+            thumbnail.isUserInteractionEnabled = false
+        }
+            
+    }
+    
+    @objc func openImage(sender : MyTapGesture) {
+        let url = sender.imageUrlToOpen
+        if let url = URL(string: url) {
+            UIApplication.shared.open(url)
+        }
     }
     
     func getImage(entryImage: EntryData){
@@ -90,6 +121,11 @@ class postsTableViewCell: UITableViewCell {
     }
 
 }
+
+class MyTapGesture: UITapGestureRecognizer {
+    var imageUrlToOpen = String()
+}
+
 
 extension TimeInterval{
     var roundDouble: String{

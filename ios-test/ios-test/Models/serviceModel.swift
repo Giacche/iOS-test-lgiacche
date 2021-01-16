@@ -42,7 +42,7 @@ struct EntryData: Decodable {
 class RedditService {
     static func requestData(success: @escaping (([EntryData]) -> Void), failure: @escaping ((Error) -> Void)) {
         let session = URLSession.shared
-        let entriesAmount = 100
+        let entriesAmount = 50
         
         guard let url = URL(string: "http://reddit.com/top.json?limit=\(entriesAmount)") else {
             return

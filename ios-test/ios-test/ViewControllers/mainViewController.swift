@@ -14,15 +14,23 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var viewControllerTitle: UILabel!
     @IBOutlet weak var postsTableView: UITableView!
     @IBOutlet weak var dismissAllPostsBtn: UIButton!
+    @IBOutlet weak var loader: UILabel!
+    @IBOutlet weak var reloadPosts: UIButton!
+    
+    @IBAction func reloadPostsAction(_ sender: Any) {
+        self.reloadPosts.isHidden = true
+        self.loader.isHidden = false
+        getPosts()
+    }
+    
     
     @IBAction func dismissAllPostsAction(_ sender: Any) {
         entries.removeAll()
         
-        UIView.transition(with: self.view,
-                          duration: 0.15,
-                          options: [.curveEaseInOut, .transitionCrossDissolve],
-                          animations: {
-                              self.postsTableView.reloadData()
+        UIView.transition(with: self.view, duration: 0.15, options: [.curveEaseInOut, .transitionCrossDissolve], animations: {
+            self.postsTableView.reloadData()
+            self.postsTableView.isHidden = true
+            self.reloadPosts.isHidden = false
         }, completion: nil)
         
     }
@@ -36,12 +44,14 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Refresh control
+        reloadPosts.isHidden = true
         
         refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(getPosts), for: .valueChanged)
         postsTableView.addSubview(refreshControl)
                
+        postsTableView.isHidden = true
+        
         //Get posts
         getPosts()
     }
@@ -51,7 +61,10 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         RedditService.requestData(success: { (entries) in
             self.entries = entries
             self.postsTableView.reloadData()
+            self.postsTableView.isHidden = false
+            self.loader.isHidden = true
             self.refreshControl.endRefreshing()
+            self.reloadPosts.isHidden = true
         }) { (error) in
             self.refreshControl.endRefreshing()
             print("Error")
@@ -107,6 +120,14 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
         indexToSegue = indexPath.row
         performSegue(withIdentifier: "showDetailPost", sender: self)
+        if let cell = tableView.cellForRow(at: indexPath) as? postsTableViewCell {
+            cell.seenIndicator.isHidden = true
+            cell.authorLeftConstraint.constant = -12
+            cell.author.textColor = .lightGray
+            cell.titleOfPost.textColor = .lightGray
+            cell.timeFromPost.textColor = .lightGray
+            cell.dismissPost.setTitleColor(.lightGray, for: .normal)
+        }
     }
     
 }
