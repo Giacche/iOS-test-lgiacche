@@ -27,7 +27,8 @@ struct EntryData: Decodable {
     let commentsAmount: Int
     let timeCreated: TimeInterval
     let thumbnailURL: String?
-    let urlBigImage: String!
+    let urlBigImage: String
+    var seenDot : Bool
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -36,6 +37,7 @@ struct EntryData: Decodable {
         case timeCreated = "created_utc"
         case thumbnailURL = "thumbnail"
         case urlBigImage = "url"
+        case seenDot = "visited"
     }
 }
 
@@ -59,9 +61,6 @@ class RedditService {
                     var entriesData: [EntryData] = []
                     for child in entries.data.children {
                         entriesData.append(child.data)
-                        if(child.data.urlBigImage != nil){
-                            print(child.data.urlBigImage)
-                        }
                     }
                     entriesData = entriesData.sorted(by: {$0.timeCreated > $1.timeCreated})
                     DispatchQueue.main.async {

@@ -15,6 +15,7 @@
 		AEAF2BA925B1EE5F00C04522 /* postsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAF2BA825B1EE5F00C04522 /* postsTableViewCell.swift */; };
 		AEAF2C7B25B2434600C04522 /* serviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAF2C7A25B2434600C04522 /* serviceModel.swift */; };
 		AEAF2C9925B28B2300C04522 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAF2C9825B28B2300C04522 /* detailViewController.swift */; };
+		AEB3BA5625B35D9C00E8A759 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEB3BA5525B35D9C00E8A759 /* iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AEAF2BA825B1EE5F00C04522 /* postsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsTableViewCell.swift; sourceTree = "<group>"; };
 		AEAF2C7A25B2434600C04522 /* serviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = serviceModel.swift; sourceTree = "<group>"; };
 		AEAF2C9825B28B2300C04522 /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
+		AEB3BA5525B35D9C00E8A759 /* iPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				AE04590E25B134C400D5429E /* Assets.xcassets */,
 				AE04591025B134C400D5429E /* LaunchScreen.storyboard */,
 				AE04591325B134C400D5429E /* Info.plist */,
+				AEB3BA5525B35D9C00E8A759 /* iPad.storyboard */,
 			);
 			path = "ios-test";
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEB3BA5625B35D9C00E8A759 /* iPad.storyboard in Resources */,
 				AE04591225B134C400D5429E /* LaunchScreen.storyboard in Resources */,
 				AE04590F25B134C400D5429E /* Assets.xcassets in Resources */,
 				AE04590D25B134C000D5429E /* Main.storyboard in Resources */,
@@ -249,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -305,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

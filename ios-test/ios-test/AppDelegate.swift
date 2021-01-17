@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    private func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+      return true
+    }
 
+    private func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+      return true
+    }
 }
 

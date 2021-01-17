@@ -73,6 +73,15 @@ class postsTableViewCell: UITableViewCell {
         }else{
             thumbnail.isUserInteractionEnabled = false
         }
+        
+        if(entry.seenDot){
+            seenIndicator.isHidden = true
+            authorLeftConstraint.constant = -12
+            author.textColor = .lightGray
+            titleOfPost.textColor = .lightGray
+            timeFromPost.textColor = .lightGray
+            dismissPost.setTitleColor(.lightGray, for: .normal)
+        }
             
     }
     
