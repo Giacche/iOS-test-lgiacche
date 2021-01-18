@@ -50,13 +50,13 @@ class detailViewController: UIViewController {
         if let error = error {
 
             let alert = UIAlertController(title: "Attention", message: "The image could not be saved to your gallery", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "oK", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
 
         } else {
 
             let alert = UIAlertController(title: "Attention", message: "The image was saved in your gallery successfully", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "oK", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }

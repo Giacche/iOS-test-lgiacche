@@ -46,7 +46,6 @@ class postsTableViewCell: UITableViewCell {
         author.textColor = .white
         titleOfPost.textColor = .white
         timeFromPost.textColor = .white
-        dismissPost.setTitleColor(.white, for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,7 +79,6 @@ class postsTableViewCell: UITableViewCell {
             author.textColor = .lightGray
             titleOfPost.textColor = .lightGray
             timeFromPost.textColor = .lightGray
-            dismissPost.setTitleColor(.lightGray, for: .normal)
         }
             
     }
