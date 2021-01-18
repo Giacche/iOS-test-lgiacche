@@ -41,6 +41,7 @@ struct EntryData: Decodable {
     }
 }
 
+//MARK: Get last 50 posts from Reddit (service)
 class RedditService {
     static func requestData(success: @escaping (([EntryData]) -> Void), failure: @escaping ((Error) -> Void)) {
         let session = URLSession.shared

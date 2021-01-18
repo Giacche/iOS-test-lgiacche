@@ -8,7 +8,6 @@
 import UIKit
 import Foundation
 
-
 class mainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, cellDelegate {
     
     @IBOutlet weak var viewControllerTitle: UILabel!
@@ -17,8 +16,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var loader: UILabel!
     @IBOutlet weak var reloadPosts: UIButton!
     
-    //iPad Outlets
-    
+    //MARK: iPad Outlets
     @IBOutlet weak var tableViewContainer: UIView!
     @IBOutlet weak var detailContainerView: UIView!
     @IBOutlet weak var authorDetail: UILabel!
@@ -27,7 +25,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var widthOfTableView: NSLayoutConstraint!
     @IBOutlet weak var widthOfDetailView: NSLayoutConstraint!
     
-    
+    //MARK: Download image to gallery user
     @IBAction func downLoadImageAction(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(self.imageDetail.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -66,6 +64,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         refreshControl.addTarget(self, action: #selector(getPosts), for: .valueChanged)
         postsTableView.addSubview(refreshControl)
         postsTableView.isHidden = true
+        
         if(UIDevice.current.userInterfaceIdiom == .pad){
             detailContainerView.isHidden = true
             
@@ -78,9 +77,23 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.detailContainerView.addGestureRecognizer(swipeLeft)
         }
         
-        //Get posts
+        // MARK: Get last 50 posts from Reddit
         getPosts()
         
+    }
+    
+    @objc func getPosts() {
+        RedditService.requestData(success: { (entries) in
+            self.entries = entries
+            self.postsTableView.reloadData()
+            self.postsTableView.isHidden = false
+            self.loader.isHidden = true
+            self.refreshControl.endRefreshing()
+            self.reloadPosts.isHidden = true
+        }) { (error) in
+            self.refreshControl.endRefreshing()
+            print("Error")
+        }
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -100,6 +113,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    // MARK: Show or Hide table view on iPad when transition
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil) { _ in
@@ -114,7 +128,6 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
-    
     
     func hideTableView(){
         UIView.animate(withDuration: 0.5,delay: 0, usingSpringWithDamping: 1.0,initialSpringVelocity: 1.0,options: .curveEaseInOut, animations: {
@@ -131,20 +144,6 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             self.detailContainerView.frame = CGRect(x: 0, y: self.detailContainerView.frame.origin.y, width: self.view.frame.size.width, height: self.detailContainerView.frame.size.height)
           }, completion: nil)
-    }
-    
-    @objc func getPosts() {
-        RedditService.requestData(success: { (entries) in
-            self.entries = entries
-            self.postsTableView.reloadData()
-            self.postsTableView.isHidden = false
-            self.loader.isHidden = true
-            self.refreshControl.endRefreshing()
-            self.reloadPosts.isHidden = true
-        }) { (error) in
-            self.refreshControl.endRefreshing()
-            print("Error")
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -174,6 +173,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         postsTableView.deleteRows(at: [indexPath!], with: .fade)
     }
     
+    //MARK: Send info to the detail
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         if(segue.identifier == "showDetailPost"){
@@ -185,6 +185,7 @@ class mainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    //MARK: TableView functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entries.count
     }

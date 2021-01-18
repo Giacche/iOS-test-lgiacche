@@ -23,6 +23,7 @@ class detailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Download image to gallery user
     @IBAction func downloadImageAction(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(self.image.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -44,6 +45,7 @@ class detailViewController: UIViewController {
             }
         }
     }
+    
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
 

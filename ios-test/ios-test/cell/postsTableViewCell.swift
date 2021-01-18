@@ -35,8 +35,6 @@ class postsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         titleOfPost.textContainer.maximumNumberOfLines = 4
         titleOfPost.textContainer.lineBreakMode = .byTruncatingTail
-        
-        
     }
     
     override func prepareForReuse() {
